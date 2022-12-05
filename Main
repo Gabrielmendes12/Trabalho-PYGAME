@@ -1,1 +1,31 @@
+import pygame
+import random
+import os
+from pygame import mixer
+from spritesheet import SpriteSheet
+from inimigo import Inimigo
 
+# inicar o pygame
+mixer.init()
+pygame.init()
+
+#Dimensoes da tela 
+SCREEN_WIDTH = 400
+SCREEN_HEIGHT = 600
+
+#janela do game
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption('Pokemon Jump')
+
+#FrameRate do jogo
+clock = pygame.time.Clock()
+FPS = 70
+
+#importando a musica e o som do jogo
+pygame.mixer.music.load('assets/musicas_Pokemon.mp3')
+pygame.mixer.music.set_volume(0.2)
+pygame.mixer.music.play(0, 0.5)
+jump_fx = pygame.mixer.Sound('assets/jump.mp3')
+jump_fx.set_volume(0.4)
+death_fx = pygame.mixer.Sound('assets/death.mp3')
+death_fx.set_volume(0.3)
