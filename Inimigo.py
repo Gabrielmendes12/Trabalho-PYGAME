@@ -21,3 +21,33 @@ class Inimigo(pygame.sprite.Sprite):
 			image = pygame.transform.flip(image, self.flip, False)
 			image.set_colorkey((0, 0, 0))
 			self.animation_list.append(image)
+		
+		self.image = self.animation_list[self.frame_index]
+		self.rect = self.image.get_rect()
+
+		if self.direction == 1:
+			self.rect.x = 0
+		else:
+			self.rect.x = SCREEN_WIDTH
+		self.rect.y = y
+
+	def update(self, scroll, SCREEN_WIDTH):
+		#update animation
+		ANIMATION_COOLDOWN = 50
+		#update image depending on current frame
+		self.image = self.animation_list[self.frame_index]
+		#check if enough time has passed since the last update
+		if pygame.time.get_ticks() - self.update_time > ANIMATION_COOLDOWN:
+			self.update_time = pygame.time.get_ticks()
+			self.frame_index += 1
+		#if the animation has run out then reset back to the start
+		if self.frame_index >= len(self.animation_list):
+			self.frame_index = 0
+
+		#move enemy
+		self.rect.x += self.direction * 2
+		self.rect.y += scroll
+
+		#check if gone off screen
+		if self.rect.right < 0 or self.rect.left > SCREEN_WIDTH:
+			self.kill()
