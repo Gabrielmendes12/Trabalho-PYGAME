@@ -22,12 +22,12 @@ clock = pygame.time.Clock()
 FPS = 70
 
 #importando a musica e o som do jogo
-pygame.mixer.music.load('assets/musicas_Pokemon.mp3')
+pygame.mixer.music.load('Assets/musicas_Pokemon.mp3')
 pygame.mixer.music.set_volume(0.2)
 pygame.mixer.music.play(-1, 0.0)
-jump_fx = pygame.mixer.Sound('assets/jump.mp3')
+jump_fx = pygame.mixer.Sound('Assets/jump.mp3')
 jump_fx.set_volume(0.4)
-death_fx = pygame.mixer.Sound('assets/death.mp3')
+death_fx = pygame.mixer.Sound('Assets/death.mp3')
 death_fx.set_volume(0.3)
 
 
@@ -53,15 +53,15 @@ BLACK = (0, 0, 0)
 PANEL = (153, 217, 234)
 
 #fonte da letra
-font_small = pygame.font.SysFont('assets/8-BIT WONDER.TTF', 30)
-font_big = pygame.font.SysFont('assets/8-BIT WONDER.TTF', 24)
+font_small = pygame.font.SysFont('Assets/8-BIT WONDER.TTF', 30)
+font_big = pygame.font.SysFont('Assets/8-BIT WONDER.TTF', 24)
 
 #importando as imagens
-pokemon_image = pygame.image.load('assets/172.png').convert_alpha()
-bg_image = pygame.image.load('assets/nuvens.png').convert_alpha()
-platform_image = pygame.transform.scale(pygame.image.load('assets/ven.png'),(700,800))
+pokemon_image = pygame.image.load('Assets/172.png').convert_alpha()
+bg_image = pygame.image.load('Assets/nuvens.png').convert_alpha()
+platform_image = pygame.transform.scale(pygame.image.load('Assets/ven.png'),(700,800))
 #charizard spritesheet
-charizard_sheet_img = pygame.image.load('assets/teste10.png').convert_alpha()
+charizard_sheet_img = pygame.image.load('Assets/teste10.png').convert_alpha()
 charizard_sheet = SpriteSheet(charizard_sheet_img)
 #funcao para escrever o texto na tela 
 def draw_text(text, font, text_col, x, y):
