@@ -128,4 +128,11 @@ class Player():
 						dy = 0
 						self.vel_y = -20
 						jump_fx.play()
-
+#verifciar se o jogador chegou no topo da tela
+		if self.rect.top <= SCROLL_THRESH:
+			#if player is jumping
+			if self.vel_y < 0:
+				scroll = -dy
+		self.rect.x += dx
+		self.rect.y += dy + scroll
+		
