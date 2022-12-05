@@ -3,7 +3,7 @@ import random
 import os
 from pygame import mixer
 from spritesheet import SpriteSheet
-from Inimigo import Inimigo
+from inimigo import Inimigo
 
 # inicar o pygame
 mixer.init()
