@@ -24,7 +24,7 @@ FPS = 70
 #importando a musica e o som do jogo
 pygame.mixer.music.load('assets/musicas_Pokemon.mp3')
 pygame.mixer.music.set_volume(0.2)
-pygame.mixer.music.play(0, 0.5)
+pygame.mixer.music.play(-1, 0.0)
 jump_fx = pygame.mixer.Sound('assets/jump.mp3')
 jump_fx.set_volume(0.4)
 death_fx = pygame.mixer.Sound('assets/death.mp3')
