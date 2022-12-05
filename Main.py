@@ -2,7 +2,7 @@ import pygame
 import random
 import os
 from pygame import mixer
-from spritesheet import SpriteSheet
+from Spritesheet import SpriteSheet
 from inimigo import Inimigo
 
 # inicar o pygame
