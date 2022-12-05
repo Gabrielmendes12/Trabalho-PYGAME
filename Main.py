@@ -61,7 +61,7 @@ pokemon_image = pygame.image.load('Assets/172.png').convert_alpha()
 bg_image = pygame.image.load('Assets/nuvens.png').convert_alpha()
 platform_image = pygame.transform.scale(pygame.image.load('Assets/ven.png'),(700,800))
 #charizard spritesheet
-charizard_sheet_img = pygame.image.load('Assets/teste10.png').convert_alpha()
+charizard_sheet_img = pygame.image.load('Assets/charizard.png').convert_alpha()
 charizard_sheet = SpriteSheet(charizard_sheet_img)
 #funcao para escrever o texto na tela 
 def draw_text(text, font, text_col, x, y):
