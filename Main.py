@@ -68,11 +68,11 @@ def draw_text(text, font, text_col, x, y):
 	img = font.render(text, True, text_col)
 	screen.blit(img, (x, y))
 
-#funcao para excrever informacoes na tela
+#funcao para escrever informacoes na tela
 def draw_panel():
 	pygame.draw.rect(screen, PANEL, (0, 0, SCREEN_WIDTH, 30))
 	pygame.draw.line(screen, WHITE, (0, 30), (SCREEN_WIDTH, 30), 2)
-	draw_text('SCORE: ' + str(score), font_small, WHITE, 0, 0)
+	draw_text('Pontuação: ' + str(score), font_small, WHITE, 0, 0)
 
 
 #funcao para desenhar a tela de fundo
@@ -183,7 +183,7 @@ pokemon = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT - 150)
 platform_group = pygame.sprite.Group()
 inimigo_group = pygame.sprite.Group()
 
-#create starting platform
+#plataforma inicial
 platform = Platform(SCREEN_WIDTH // 2 - 50, SCREEN_HEIGHT - 50, 100, False)
 platform_group.add(platform)
 
