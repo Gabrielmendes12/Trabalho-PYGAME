@@ -63,3 +63,69 @@ platform_image = pygame.transform.scale(pygame.image.load('assets/ven.png'),(700
 #charizard spritesheet
 charizard_sheet_img = pygame.image.load('assets/teste10.png').convert_alpha()
 charizard_sheet = SpriteSheet(charizard_sheet_img)
+#funcao para escrever o texto na tela 
+def draw_text(text, font, text_col, x, y):
+	img = font.render(text, True, text_col)
+	screen.blit(img, (x, y))
+
+#funcao para excrever informacoes na tela
+def draw_panel():
+	pygame.draw.rect(screen, PANEL, (0, 0, SCREEN_WIDTH, 30))
+	pygame.draw.line(screen, WHITE, (0, 30), (SCREEN_WIDTH, 30), 2)
+	draw_text('SCORE: ' + str(score), font_small, WHITE, 0, 0)
+
+
+#funcao para desenhar a tela de fundo
+def draw_bg(bg_scroll):
+	screen.blit(bg_image, (0, 0 + bg_scroll))
+	screen.blit(bg_image, (0, -600 + bg_scroll))
+
+#player class
+class Player():
+	def __init__(self, x, y):
+		self.image = pygame.transform.scale(pokemon_image, (45, 45))
+		self.width = 25
+		self.height = 40
+		self.rect = pygame.Rect(0, 0, self.width, self.height)
+		self.rect.center = (x, y)
+		self.vel_y = 0
+		self.flip = False
+
+	def move(self):
+		#resetando as  variaveis
+		scroll = 0
+		dx = 0
+		dy = 0
+
+		#teclas
+		key = pygame.key.get_pressed()
+		if key[pygame.K_a]:
+			dx = -10
+			self.flip = True
+		if key[pygame.K_d]:
+			dx = 10
+			self.flip = False
+
+		#gravidade
+		self.vel_y += GRAVITY
+		dy += self.vel_y
+
+		#fazendo com que o boneco não saia da teela
+		if self.rect.left + dx < 0:
+			dx = -self.rect.left
+		if self.rect.right + dx > SCREEN_WIDTH:
+			dx = SCREEN_WIDTH - self.rect.right
+
+
+		#colisao com as plataformas
+		for platform in platform_group:
+			#collision in the y direction
+			if platform.rect.colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
+				#check if above the platform
+				if self.rect.bottom < platform.rect.centery:
+					if self.vel_y > 0:
+						self.rect.bottom = platform.rect.top
+						dy = 0
+						self.vel_y = -20
+						jump_fx.play()
+
