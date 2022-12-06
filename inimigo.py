@@ -13,15 +13,17 @@ class Inimigo(pygame.sprite.Sprite):
 			self.flip = True
 		else:
 			self.flip = False
-      
-    #numero de sprites do charizard
+
+		#load images from spritesheet
+		#numero de sprites do charizard
 		animation_steps = 1
 		for animation in range(animation_steps):
-			image = sprite_sheet.get_image(animation, 20 ,20, scale, (0, 0, 0))
+			image = sprite_sheet.get_image(animation, 60 ,60, scale, (0, 0, 0))
 			image = pygame.transform.flip(image, self.flip, False)
 			image.set_colorkey((0, 0, 0))
 			self.animation_list.append(image)
 		
+		#select starting image and create rectangle from it
 		self.image = self.animation_list[self.frame_index]
 		self.rect = self.image.get_rect()
 
